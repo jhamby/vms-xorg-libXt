@@ -111,6 +111,15 @@ typedef char *String;
 #define TRUE 1
 #endif
 
+#if __STDC_VERSION__ >= 199901L
+#include <stdint.h>
+typedef intptr_t	XtIntPtr;
+typedef uintptr_t	XtUIntPtr;
+#else
+typedef long		XtIntPtr;
+typedef unsigned long	XtUIntPtr;
+#endif
+
 #define XtNumber(arr)		((Cardinal) (sizeof(arr) / sizeof(arr[0])))
 
 typedef struct _WidgetRec *Widget;
@@ -157,7 +166,7 @@ typedef int		XtCacheType;
  *
  ****************************************************************/
 typedef char		Boolean;
-typedef long		XtArgVal;
+typedef XtIntPtr	XtArgVal;
 typedef unsigned char	XtEnum;
 
 typedef unsigned int	Cardinal;
@@ -165,6 +174,11 @@ typedef unsigned short	Dimension;  /* Size in pixels			*/
 typedef short		Position;   /* Offset from 0 coordinate		*/
 
 typedef void*		XtPointer;
+#if __STDC_VERSION__ >= 201112L
+_Static_assert(sizeof(XtArgVal) >= sizeof(XtPointer), "XtArgVal too small");
+_Static_assert(sizeof(XtArgVal) >= sizeof(long), "XtArgVal too small");
+#endif
+
 
 /* The type Opaque is NOT part of the Xt standard, do NOT use it. */
 /* (It remains here only for backward compatibility.) */
