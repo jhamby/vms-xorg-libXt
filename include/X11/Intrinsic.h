@@ -131,10 +131,10 @@ typedef struct _XtEventRec *XtEventTable;
 
 typedef struct _XtAppStruct *XtAppContext;
 typedef unsigned long	XtValueMask;
-typedef unsigned long	XtIntervalId;
-typedef unsigned long	XtInputId;
-typedef unsigned long	XtWorkProcId;
-typedef unsigned long	XtSignalId;
+typedef XtUIntPtr	XtIntervalId;
+typedef XtUIntPtr	XtInputId;
+typedef XtUIntPtr	XtWorkProcId;
+typedef XtUIntPtr	XtSignalId;
 typedef unsigned int	XtGeometryMask;
 typedef unsigned long	XtGCMask;   /* Mask of values that are used by widget*/
 typedef unsigned long	Pixel;	    /* Index into colormap		*/
@@ -283,7 +283,7 @@ typedef void (*XtActionHookProc)(
     Cardinal*		/* num_params */
 );
 
-typedef unsigned long XtBlockHookId;
+typedef XtUIntPtr XtBlockHookId;
 
 typedef void (*XtBlockHookProc)(
     XtPointer		/* client_data */
