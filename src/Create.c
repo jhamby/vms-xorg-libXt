@@ -145,8 +145,8 @@ XtInitializeWidgetClass(WidgetClass wc)
         Cardinal num_params;
 
         param[0] = wc->core_class.class_name;
-        param[1] = (String) wc->core_class.version;
-        param[2] = (String) XtVersion;
+        param[1] = (String) (XtIntPtr) wc->core_class.version;
+        param[2] = (String) (XtIntPtr) XtVersion;
 
         if (wc->core_class.version == (11 * 1000 + 5) ||        /* MIT X11R5 */
             wc->core_class.version == (11 * 1000 + 4)) {        /* MIT X11R4 */

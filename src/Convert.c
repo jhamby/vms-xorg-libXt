@@ -608,8 +608,8 @@ ComputeArgs(Widget widget,
             /* Convert in place for next usage */
             convert_args[i].address_mode = XtResourceQuark;
             convert_args[i].address_id =
-                (XtPointer) (long) XrmStringToQuark((String) convert_args[i].
-                                                    address_id);
+                (XtPointer) (XtIntPtr) XrmStringToQuark((String) convert_args[i].
+                                                        address_id);
             /* Fall through */
 
         case XtResourceQuark:

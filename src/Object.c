@@ -180,7 +180,7 @@ ConstructCallbackOffsets(WidgetClass myWidgetClass)
         __XtMalloc((Cardinal)
                    (sizeof(XrmResource *) * (size_t) (tableSize + 1)));
 
-    newTable[0] = (XrmResource *) (long) tableSize;
+    newTable[0] = (XrmResource *) (XtIntPtr) tableSize;
 
     if (superTable)
         tableSize -= (int) (long) superTable[0];
