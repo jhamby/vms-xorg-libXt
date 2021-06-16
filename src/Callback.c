@@ -80,7 +80,11 @@ static _Xconst _XtString XtNxtRemoveAllCallback = "xtRemoveAllCallback";
 static _Xconst _XtString XtNxtCallCallback = "xtCallCallback";
 
 /* However it doesn't contain a final NULL record */
+#if __STDC_VERSION__ >= 199901L
+#define ToList(p) ((p)->callbacks)
+#else
 #define ToList(p) ((XtCallbackList) ((p)+1))
+#endif
 
 static InternalCallbackList *
 FetchInternalList(Widget widget,
